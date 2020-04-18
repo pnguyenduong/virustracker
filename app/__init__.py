@@ -1,6 +1,6 @@
 from flask import Flask
 from configs.settings import Config
-from .extensions import db, ma
+from .extensions import db, ma, migrate
 
 def create_app(config_class=Config):
 
@@ -11,6 +11,7 @@ def create_app(config_class=Config):
     # initiate extensions
     db.init_app(app)
     ma.init_app(app)    
+    migrate.init_app(app, db)    
 
     # importing blueprint packages
     from app.api.routes import api
