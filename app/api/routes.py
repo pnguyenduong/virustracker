@@ -1,7 +1,7 @@
 from flask import jsonify, Blueprint
 from datetime import datetime
 from ..models import VirusData
-from ..schemas import DataSchema
+from ..schemas import data_schema
 
 api = Blueprint('api', __name__)
 
@@ -10,8 +10,22 @@ def index():
 
     data = VirusData.query.filter(VirusData.date == datetime.today().date()).all()
 
-    # init marshmallow schema
-    data_schema = DataSchema(many=True)
-    countries = data_schema.dump(data)
+    return jsonify(data_schema.dump(data))
 
-    return jsonify(countries)
+@api.route('/all')
+def all():
+
+    data = VirusData.query.all()
+
+    return jsonify(data_schema.dump(data))
+
+
+@api.route('/<name>')
+def country(name):
+
+    if name.islower() == True:
+        name = name.capitalize()
+        print(name)
+    data = VirusData.query.filter_by(name=name).all()
+
+    return jsonify(data_schema.dump(data))

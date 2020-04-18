@@ -1,7 +1,7 @@
 from .models import VirusData
 from app import ma
 
-class DataSchema(ma.SQLAlchemySchema):
+class DataSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = VirusData
     
@@ -15,3 +15,8 @@ class DataSchema(ma.SQLAlchemySchema):
     death_today = ma.auto_field()
     death_total = ma.auto_field()
     date = ma.auto_field()
+    
+# init marshmallow schema
+data_schema = DataSchema(many=True)
+
+
