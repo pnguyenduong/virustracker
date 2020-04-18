@@ -1,10 +1,11 @@
-from flask import jsonify
+from flask import jsonify, Blueprint
 from datetime import datetime
-from app.models import VirusData
-from app.schemas import DataSchema
-from app import app
+from ..models import VirusData
+from ..schemas import DataSchema
 
-@app.route('/')
+api = Blueprint('api', __name__)
+
+@api.route('/')
 def index():
 
     data = VirusData.query.filter(VirusData.date == datetime.today().date()).all()

@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
-from app.models import VirusData
-from app import db
+from .models import VirusData
+from .app import db
 import requests
 
 

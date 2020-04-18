@@ -1,5 +1,5 @@
-from app.models import VirusData
-from app import ma
+from .models import VirusData
+from .app import ma
 
 class DataSchema(ma.SQLAlchemySchema):
     class Meta:
