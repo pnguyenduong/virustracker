@@ -1,5 +1,5 @@
 from flask import Flask, jsonify
-from app.configs import Config
+from configs import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 
