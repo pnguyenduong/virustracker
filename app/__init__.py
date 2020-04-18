@@ -19,9 +19,9 @@ def create_app(config_class=Config):
     # register blueprint app for ready to use
     app.register_blueprint(api)
 
-    # import variable for flask shell
+    # import variables ready to use for flask shell
     from app.models import VirusData
-    from app.api.tools import scrape_data, filter_data, import_data
+    from tools.data import scrape_data, filter_data, import_data
     @app.shell_context_processor
     def make_shell_context():
         return {'db': db, 'VirusData': VirusData, 'scrape_data': scrape_data,

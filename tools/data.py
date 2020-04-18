@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-from ..models import VirusData
+from app.models import VirusData
 from app import db
 import requests
 
@@ -51,10 +51,4 @@ def import_data():
         db.session.add(virus_data)
     db.session.commit()
 
-def filter_input(name):
-    print(name)
-    if name.islower() == True:
-        name = name.capitalize()
-    if len(name) < 4:
-        name = name.upper()
-    return name
+    

@@ -2,8 +2,8 @@ import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config:
+    
     # setting app secret key
-
     SECRET_KEY = os.environ.get('SECRET_KEY') 
 
     # database
