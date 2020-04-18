@@ -28,14 +28,14 @@ class DataSchema(ma.SQLAlchemySchema):
     recovered_total = ma.auto_field()
     death_today = ma.auto_field()
     death_total = ma.auto_field()
-    timestamp = ma.auto_field()
+    date = ma.auto_field()
 
     
 
 @app.route('/')
 def index():
 
-    data = VirusData.query.filter(VirusData.timestamp == datetime.today().date()).all()
+    data = VirusData.query.filter(VirusData.date == datetime.today().date()).all()
 
     # init marshmallow schema
     data_schema = DataSchema(many=True)

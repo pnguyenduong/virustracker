@@ -11,7 +11,7 @@ class VirusData(db.Model):
     recovered_total = db.Column(db.String())
     death_today = db.Column(db.String())
     death_total = db.Column(db.String())
-    timestamp = db.Column(db.Date, nullable=False, default=datetime.utcnow)
+    date = db.Column(db.Date, nullable=False, default=datetime.utcnow)
 
     def __repr__(self):
         return f'ID:{self.id}, Country: {self.name}, Total Cases: {self.case_total}, Today Cases: {self.case_today}, \
