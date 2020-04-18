@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-from models import VirusData
+from app.models import VirusData
 from app import db
 import requests
 
