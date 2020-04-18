@@ -2,7 +2,7 @@ from flask import jsonify, Blueprint
 from datetime import datetime
 from ..models import VirusData
 from ..schemas import data_schema
-
+from .tools import filter_input
 api = Blueprint('api', __name__)
 
 @api.route('/')
@@ -23,9 +23,9 @@ def all():
 @api.route('/<name>')
 def country(name):
 
-    if name.islower() == True:
-        name = name.capitalize()
-        print(name)
+    # filter out the user input
+    name = filter_input(name)
+    
     data = VirusData.query.filter_by(name=name).all()
 
     return jsonify(data_schema.dump(data))
