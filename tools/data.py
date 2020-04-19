@@ -3,7 +3,7 @@ from app.models import VirusData
 from app import db
 import requests
 
-
+# download data from worldometers on current day
 def scrape_data():
     base_url = 'https://www.worldometers.info/coronavirus/'
     response = requests.get(base_url)
@@ -21,6 +21,7 @@ def scrape_data():
         data.append(row)
     return data
 
+# filter out unuse contents
 def filter_data(data):
     data = data[1:-8]
     data.pop(6)
@@ -47,8 +48,9 @@ def import_data():
             death_today = row[4],
             death_total = row[3],
         )
-        # save each object into database
+        # save each object
         db.session.add(virus_data)
+    # save all into database
     db.session.commit()
 
     

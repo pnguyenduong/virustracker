@@ -1,9 +1,12 @@
-from flask import jsonify, Blueprint
 from datetime import datetime
-from ..models import VirusData
-from ..schemas import data_schema
+from flask import jsonify, Blueprint
+from app.models import VirusData
+from app.schemas import data_schema
 from tools.routes import filter_country_name, filter_date, get_today_date
+
+
 api = Blueprint('api', __name__)
+
 
 @api.route('/')
 def index():
@@ -14,6 +17,7 @@ def index():
     data = VirusData.query.filter_by(date=date).all()
 
     return jsonify(data_schema.dump(data))
+
 
 @api.route('/all')
 def all():
@@ -34,6 +38,7 @@ def country(country_name):
     data = VirusData.query.filter_by(name=country_name).all()
 
     return jsonify(data_schema.dump(data))
+
 
 @api.route('/<int:year>-<int:month>-<int:day>')
 def date(year, month, day):
