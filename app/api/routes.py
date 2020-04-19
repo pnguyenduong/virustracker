@@ -1,5 +1,6 @@
 from datetime import datetime
 from flask import jsonify, Blueprint
+from sqlalchemy import and_
 from app.models import VirusData
 from app.schemas import data_schema
 from tools.routes import filter_country_name, filter_date, get_today_date
@@ -9,7 +10,7 @@ api = Blueprint('api', __name__)
 
 
 @api.route('/')
-def index():
+def today():
 
     # get today date
     date = get_today_date()
@@ -34,8 +35,8 @@ def all():
     return jsonify(data_schema.dump(data))
 
 
-@api.route('/<country_name>')
-def country(country_name):
+@api.route('/<country_name>/all')
+def country_all(country_name):
 
     # filter out the user input
     country_name = filter_country_name(country_name)
@@ -46,13 +47,41 @@ def country(country_name):
     return jsonify(data_schema.dump(data))
 
 
-@api.route('/<int:year>-<int:month>-<int:day>')
-def date(year, month, day):
+@api.route('/<country_name>')
+def country_today(country_name):
 
-    # filter date
+    # filter out the user input
+    country_name = filter_country_name(country_name)
+
+    # get today date
+    date = get_today_date()
+
+    # get data based on country name and current day
+    data = VirusData.query.filter( and_(VirusData.name == country_name, VirusData.date == date))
+    return jsonify(data_schema.dump(data))
+
+
+@api.route('/<country_name>/<int:year>-<int:month>-<int:day>')
+def country_by_date(country_name, year, month, day):
+
+    # filter out the user input
+    country_name = filter_country_name(country_name)
+
+    # filter selected date
     date = filter_date(year, month, day)
 
-    # get data based on date
+    # get data based on country name and selected day
+    data = VirusData.query.filter( and_(VirusData.name == country_name, VirusData.date == date))
+    return jsonify(data_schema.dump(data))
+
+
+@api.route('/<int:year>-<int:month>-<int:day>')
+def by_date(year, month, day):
+
+    # filter selected date
+    date = filter_date(year, month, day)
+
+    # get data based on selected date
     data = VirusData.query.filter_by(date=date).all()
 
     return jsonify(data_schema.dump(data))
