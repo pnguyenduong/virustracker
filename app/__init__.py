@@ -16,9 +16,11 @@ def create_app(config_class=Config):
 
     # importing blueprint packages
     from app.api.routes import api
+    from app.errors.error_handlers import errors
 
     # register blueprint app for ready to use
     app.register_blueprint(api)
+    app.register_blueprint(errors)
 
     # import variables ready to use for flask shell
     from app.models import VirusData

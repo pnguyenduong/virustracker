@@ -19,6 +19,7 @@ class DataSchema(ma.SQLAlchemyAutoSchema):
  
     
 # init marshmallow schema
-data_schema = DataSchema(many=True)
+data_schema = DataSchema()
+datas_schema = DataSchema(many=True)
 
 
