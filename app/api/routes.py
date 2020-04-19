@@ -3,7 +3,7 @@ from flask import jsonify, Blueprint
 from app.models import VirusData
 from app.schemas import data_schema
 from tools.routes import filter_country_name, filter_date, get_today_date
-
+from tools.data import import_data
 
 api = Blueprint('api', __name__)
 
@@ -13,8 +13,14 @@ def index():
 
     # get today date
     date = get_today_date()
+
     # get data for today
     data = VirusData.query.filter_by(date=date).all()
+    
+    # auto download data for new day
+    if data is None:
+        import_data()
+        data = VirusData.query.filter_by(date=date).all()
 
     return jsonify(data_schema.dump(data))
 
