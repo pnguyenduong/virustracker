@@ -50,7 +50,7 @@ def import_data():
         )
         # save each object
         db.session.add(virus_data)
-    # save all into database
+    # close and finish the session
     db.session.commit()
 
     
