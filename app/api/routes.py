@@ -19,7 +19,7 @@ def today():
     data = VirusData.query.filter_by(date=date).all()
     
     # auto download data for new day
-    if not data:
+    if data is None:
         import_data()
         
         # get data for today
