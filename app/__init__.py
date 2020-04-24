@@ -1,6 +1,6 @@
 from flask import Flask
 from configs.settings import Config
-from .extensions import db, ma, migrate
+from .extensions import db, ma, migrate, sched
 
 
 def create_app(config_class=Config):
@@ -30,6 +30,10 @@ def create_app(config_class=Config):
     def make_shell_context():
         return {'db': db, 'VirusData': VirusData, 'scrape_data': scrape_data,
                 'filter_data': filter_data, 'import_data': import_data}
+
+    sched.add_job(import_data, 'cron', day='*', hour='0')
+
+    sched.start()
 
     return app
 

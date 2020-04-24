@@ -1,10 +1,11 @@
 from datetime import datetime
-from flask import jsonify, Blueprint, abort
+from flask import jsonify, Blueprint, abort, redirect, url_for
 from sqlalchemy import and_
 from app.models import VirusData
 from app.schemas import data_schema, datas_schema
 from tools.routes import filter_country_name, filter_date, get_today_date
 from tools.data import import_data
+
 
 api = Blueprint('api', __name__)
 
@@ -17,19 +18,10 @@ def today():
 
     # get data for today
     data = VirusData.query.filter_by(date=date).all()
-    
-    # auto download data for new day
-    if not data:
-        import_data()
-        
-        # get data for today
-        data = VirusData.query.filter_by(date=date).all()
 
-        # custom error message
-        if not data:
-            abort(404, description="Resource not found")
-
-
+    # custom error message
+    if data is None:
+        abort(404, description="Resource not found")
 
     return jsonify(datas_schema.dump(data))
 
@@ -42,7 +34,6 @@ def all():
     # custom error message
     if not data:
         abort(404, description="Resource not found")
-
 
     return jsonify(datas_schema.dump(data))
 
@@ -59,8 +50,6 @@ def country_all(country_name):
     if not data:
         abort(404, description="Resource not found")
 
-
-
     return jsonify(datas_schema.dump((data)))
 
 
@@ -75,6 +64,7 @@ def country_today(country_name):
 
     # get data based on country name and current day
     data = VirusData.query.filter( and_(VirusData.name == country_name, VirusData.date == date)).first_or_404()
+
     return jsonify(data_schema.dump(data))
 
 
@@ -89,6 +79,7 @@ def country_by_date(country_name, year, month, day):
 
     # get data based on country name and selected day
     data = VirusData.query.filter( and_(VirusData.name == country_name, VirusData.date == date)).first_or_404()
+
     return jsonify(data_schema.dump(data))
 
 
