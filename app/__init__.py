@@ -26,13 +26,14 @@ def create_app(config_class=Config):
     from app.models import VirusData
     from tools.data import scrape_data, filter_data, import_data
     
+    # setting up the variables in flask shell
     @app.shell_context_processor
     def make_shell_context():
         return {'db': db, 'VirusData': VirusData, 'scrape_data': scrape_data,
                 'filter_data': filter_data, 'import_data': import_data}
 
+    # setting up background job
     sched.add_job(import_data, 'cron', day='*', hour='0')
-
     sched.start()
 
     return app
