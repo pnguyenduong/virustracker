@@ -13,16 +13,16 @@ Covid-19 Flask API
 ## Built With
 
 * [Flask](https://github.com/pallets/flask) - The web framework used
-* [pip](https://pypi.org/project/pip/) - Dependency Management
-* [Flask-Marshmallow](https://flask-marshmallow.readthedocs.io/en/latest/) - Used to generate API 
+* [pip](https://github.com/pypa/pip) - Dependency Management
+* [Flask-Marshmallow](https://github.com/marshmallow-code/flask-marshmallow) - Used to generate API 
 
 ## Authors
 
-* **Phong Nguyen Duong** - *Initial work* - [VirusTracker](https://github.com/pnguyenduong)
+* **Phong Nguyen Duong** - *Initial work* - [VirusTracker](https://github.com/pnguyenduong/virustracker-api)
 
 See also the list of [contributors](https://github.com/pnguyenduong/virustracker-api/graphs/contributors) who participated in this project.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/pnguyenduong/virustracker-api/blob/master/LICENSE) file for details
 
