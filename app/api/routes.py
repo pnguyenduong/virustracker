@@ -5,7 +5,6 @@ from app.models import VirusData
 from app.schemas import data_schema, datas_schema
 from tools.routes import filter_country_name, filter_date, get_today_date
 
-
 api = Blueprint('api', __name__)
 
 
@@ -30,6 +29,7 @@ def all():
 
     # get everything from database
     data = VirusData.query.all()
+
     # custom error message
     if not data:
         abort(404, description="Resource not found")
@@ -45,6 +45,7 @@ def country_all(country_name):
 
     # get data based on country name
     data = VirusData.query.filter_by(name=country_name).all()
+
     # custom error message
     if not data:
         abort(404, description="Resource not found")
@@ -64,6 +65,10 @@ def country_today(country_name):
     # get data based on country name and current day
     data = VirusData.query.filter( and_(VirusData.name == country_name, VirusData.date == date)).first_or_404()
 
+    # custom error message
+    if not data:
+        abort(404, description="Resource not found")
+
     return jsonify(data_schema.dump(data))
 
 
@@ -78,6 +83,10 @@ def country_by_date(country_name, year, month, day):
 
     # get data based on country name and selected day
     data = VirusData.query.filter( and_(VirusData.name == country_name, VirusData.date == date)).first_or_404()
+
+    # custom error message
+    if not data:
+        abort(404, description="Resource not found")
 
     return jsonify(data_schema.dump(data))
 
