@@ -40,13 +40,14 @@ def import_data():
     for row in data:
         virus_data = VirusData(
             name = row[0], 
-            case_total = "".join(filter(lambda x: x.isdigit(), row[1])) if row[1] else 0,
-            case_today = "".join(filter(lambda x: x.isdigit(), row[2])) if row[2] else 0,
-            case_active = "".join(filter(lambda x: x.isdigit(), row[6])) if row[6] else 0,
-            case_serious = "".join(filter(lambda x: x.isdigit(), row[7])) if row[7] else 0,
-            recovered_total = "".join(filter(lambda x: x.isdigit(), row[5])) if row[5] else 0,
-            death_today = "".join(filter(lambda x: x.isdigit(), row[4])) if row[4] else 0,
-            death_total = "".join(filter(lambda x: x.isdigit(), row[3])) if row[3] else 0,
+            case_total = 0 if not row[1] else "".join(filter(lambda x: x.isdigit(), row[1])),
+            case_today = 0 if not row[2] else "".join(filter(lambda x: x.isdigit(), row[2])),
+            case_active = 0 if not row[6] else "".join(filter(lambda x: x.isdigit(), row[6])),
+            case_serious = 0 if not row[7] else "".join(filter(lambda x: x.isdigit(), row[7])),
+            death_today = 0 if not row[4] else "".join(filter(lambda x: x.isdigit(), row[4])),
+            death_total = 0 if not row[3] else "".join(filter(lambda x: x.isdigit(), row[3])),
+            recovered_total = 0 if not row[5] or row[5] == "N/A" else "".join(filter(lambda x: x.isdigit(), row[5])),
+            
         )
         # save each object
         db.session.add(virus_data)
