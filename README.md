@@ -4,7 +4,11 @@ Covid-19 Flask API
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+* [/](https://virustracker-api.herokuapp.com/) - Return today data only
+* [/all](https://virustracker-api.herokuapp.com/all) - Return all data
+* [/country_abbreviations](https://virustracker-api.herokuapp.com/vn) - Searched by country abbreviations
+* [/date<yyyy-mm-dd>](https://virustracker-api.herokuapp.com/2020-04-25) - Searched by selected date
+* [country_abbreviations/date<yyyy-mm-dd>](https://virustracker-api.herokuapp.com/vn/2020-04-25) - Searched by country abbreviations and selected date
 
 ### Prerequisites
 
@@ -58,23 +62,15 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+* [Flask](https://github.com/pallets/flask) - The web framework used
+* [pip](https://pypi.org/project/pip/) - Dependency Management
+* [Flask-Marshmallow](https://flask-marshmallow.readthedocs.io/en/latest/) - Used to generate API 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Phong Nguyen Duong** - *Initial work* - [VirusTracker](https://github.com/pnguyenduong)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/pnguyenduong/virustracker-api/graphs/contributors) who participated in this project.
 
 ## License
 
