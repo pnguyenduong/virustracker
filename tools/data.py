@@ -40,13 +40,13 @@ def import_data():
     for row in data:
         virus_data = VirusData(
             name = row[0], 
-            case_total = row[1],
-            case_today = row[2],
-            case_active = row[6],
-            case_serious = row[7],
-            recovered_total = row[5],
-            death_today = row[4],
-            death_total = row[3],
+            case_total = "".join(filter(lambda x: x.isdigit(), row[1])) if row[1] else 0,
+            case_today = "".join(filter(lambda x: x.isdigit(), row[2])) if row[2] else 0,
+            case_active = "".join(filter(lambda x: x.isdigit(), row[6])) if row[6] else 0,
+            case_serious = "".join(filter(lambda x: x.isdigit(), row[7])) if row[7] else 0,
+            recovered_total = "".join(filter(lambda x: x.isdigit(), row[5])) if row[5] else 0,
+            death_today = "".join(filter(lambda x: x.isdigit(), row[4])) if row[4] else 0,
+            death_total = "".join(filter(lambda x: x.isdigit(), row[3])) if row[3] else 0,
         )
         # save each object
         db.session.add(virus_data)
