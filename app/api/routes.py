@@ -4,7 +4,6 @@ from sqlalchemy import and_
 from app.models import VirusData
 from app.schemas import data_schema, datas_schema
 from tools.routes import filter_country_name, filter_date, get_today_date
-from tools.data import import_data
 
 
 api = Blueprint('api', __name__)
