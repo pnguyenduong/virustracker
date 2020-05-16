@@ -1,7 +1,7 @@
 from flask import Flask
 from configs.settings import Config
 from .extensions import db, ma, migrate, scheduler
-from commands import create_table, import_data_from_server
+from commands.data import create_table, import_data_from_server
 
 def create_app(config_class=Config):
 
