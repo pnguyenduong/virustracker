@@ -24,7 +24,6 @@ def scrape_data():
 # filter out unuse contents
 def filter_data(data):
     data = data[1:-8]
-    data.pop(6)
     return data
 
 # import data into database objects
@@ -39,14 +38,13 @@ def import_data():
 
     for row in data:
         virus_data = VirusData(
-            name = row[0], 
-            case_total = 0 if not row[1] else "".join(filter(lambda x: x.isdigit(), row[1])),
-            case_today = 0 if not row[2] else "".join(filter(lambda x: x.isdigit(), row[2])),
-            case_active = 0 if not row[6] else "".join(filter(lambda x: x.isdigit(), row[6])),
-            case_serious = 0 if not row[7] else "".join(filter(lambda x: x.isdigit(), row[7])),
-            death_today = 0 if not row[4] else "".join(filter(lambda x: x.isdigit(), row[4])),
-            death_total = 0 if not row[3] else "".join(filter(lambda x: x.isdigit(), row[3])),
-            recovered_total = 0 if not row[5] or row[5] == "N/A" else "".join(filter(lambda x: x.isdigit(), row[5])),
+            name = row[1], 
+            case_total = 0 if not row[2] else "".join(filter(lambda x: x.isdigit(), row[2])),
+            case_today = 0 if not row[3] else "".join(filter(lambda x: x.isdigit(), row[3])),
+            case_serious = 0 if not row[8] else "".join(filter(lambda x: x.isdigit(), row[8])),
+            death_today = 0 if not row[5] else "".join(filter(lambda x: x.isdigit(), row[5])),
+            death_total = 0 if not row[4] else "".join(filter(lambda x: x.isdigit(), row[4])),
+            recovered_total = 0 if not row[6] or row[6] == "N/A" else "".join(filter(lambda x: x.isdigit(), row[6])),
             
         )
         # save each object
