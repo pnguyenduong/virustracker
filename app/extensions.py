@@ -8,4 +8,4 @@ from apscheduler.schedulers.background import BackgroundScheduler
 db = SQLAlchemy()
 ma = Marshmallow()
 migrate = Migrate()
-sched = BackgroundScheduler(daemon=True)
+scheduler = BackgroundScheduler(daemon=True)

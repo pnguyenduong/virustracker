@@ -1,7 +1,7 @@
 from flask import Flask
 from configs.settings import Config
-from .extensions import db, ma, migrate, sched
-
+from .extensions import db, ma, migrate, scheduler
+from commands import create_table, import_data_from_server
 
 def create_app(config_class=Config):
 
@@ -32,9 +32,13 @@ def create_app(config_class=Config):
         return {'db': db, 'VirusData': VirusData, 'scrape_data': scrape_data,
                 'filter_data': filter_data, 'import_data': import_data}
 
+    # adding custom commands
+    app.cli.add_command(create_table)
+    app.cli.add_command(import_data_from_server)
+
     # setting up background job
-    sched.add_job(import_data, 'cron', day='*', hour='0')
-    sched.start()
+    scheduler.add_job(import_data, 'cron', day='*', hour='0')
+    scheduler.start()
 
     return app
 
