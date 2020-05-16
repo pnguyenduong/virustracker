@@ -7,8 +7,8 @@ Covid-19 Flask API
 * [/](https://virustracker-api.herokuapp.com/) - Return today data only
 * [/all](https://virustracker-api.herokuapp.com/all) - Return all data
 * [/country_abbreviations](https://virustracker-api.herokuapp.com/vn) - Searched by country abbreviations
-* [/date<yyyy-mm-dd>](https://virustracker-api.herokuapp.com/2020-04-25) - Searched by selected date
-* [country_abbreviations/date<yyyy-mm-dd>](https://virustracker-api.herokuapp.com/vn/2020-04-25) - Searched by country abbreviations and selected date
+* [/date<yyyy-mm-dd>](https://virustracker-api.herokuapp.com/2020-05-16) - Searched by selected date
+* [country_abbreviations/date<yyyy-mm-dd>](https://virustracker-api.herokuapp.com/vn/2020-05-16) - Searched by country abbreviations and selected date
 
 ## Built With
 
