@@ -1,1 +1,1 @@
-NEW_RELIC_CONFIG_FILE=newrelic.ini newrelic-admin run-program web: gunicorn run:app
+NEW_RELIC_CONFIG_FILE=newrelic.ini newrelic-admin run-program gunicorn -w 3 run:app
