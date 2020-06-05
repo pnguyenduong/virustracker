@@ -41,7 +41,6 @@ def import_data():
             name = row[1], 
             case_total = 0 if not row[2] else "".join(filter(lambda x: x.isdigit(), row[2])),
             case_today = 0 if not row[3] else "".join(filter(lambda x: x.isdigit(), row[3])),
-            case_serious = 0 if not row[8] else "".join(filter(lambda x: x.isdigit(), row[8])),
             death_today = 0 if not row[5] else "".join(filter(lambda x: x.isdigit(), row[5])),
             death_total = 0 if not row[4] else "".join(filter(lambda x: x.isdigit(), row[4])),
             recovered_total = 0 if not row[6] or row[6] == "N/A" else "".join(filter(lambda x: x.isdigit(), row[6])),
