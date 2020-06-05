@@ -10,7 +10,6 @@ class DataSchema(ma.SQLAlchemyAutoSchema):
     name = ma.auto_field()
     case_total = ma.auto_field()
     case_today = ma.auto_field()
-    case_serious = ma.auto_field()
     recovered_total = ma.auto_field()
     death_today = ma.auto_field()
     death_total = ma.auto_field()
