@@ -14,6 +14,7 @@ Covid-19 Data Api with Flask Framework
 * [Flask](https://github.com/pallets/flask) - The web framework used
 * [pip](https://github.com/pypa/pip) - Dependency Management
 * [Flask-Marshmallow](https://github.com/marshmallow-code/flask-marshmallow) - API generator
+* [Python] and the help of other python libraries :)
 
 ## Authors
 
