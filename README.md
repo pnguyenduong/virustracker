@@ -1,10 +1,9 @@
 # Project Title
 
-Covid-19 Flask API 
+Covid-19 Data Api with Flask Framework
 
 ## Getting Started
 
-* [/](https://virustracker-api.herokuapp.com/) - Return today data only
 * [/all](https://virustracker-api.herokuapp.com/all) - Return all data
 * [/country_abbreviations](https://virustracker-api.herokuapp.com/vn) - Searched by country abbreviations
 * [/date<yyyy-mm-dd>](https://virustracker-api.herokuapp.com/2020-05-16) - Searched by selected date
@@ -14,7 +13,7 @@ Covid-19 Flask API
 
 * [Flask](https://github.com/pallets/flask) - The web framework used
 * [pip](https://github.com/pypa/pip) - Dependency Management
-* [Flask-Marshmallow](https://github.com/marshmallow-code/flask-marshmallow) - Used to generate API 
+* [Flask-Marshmallow](https://github.com/marshmallow-code/flask-marshmallow) - API generator
 
 ## Authors
 
